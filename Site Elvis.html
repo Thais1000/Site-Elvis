@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elves Corretor - Corretor de Imóveis em São Paulo</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+        html { scroll-behavior: smooth; }
+        :root {
+            --primary-color: #1A237E;
+            --secondary-color: #D4AF37;
+            --background-color: #F8F9FA;
+            --text-color: #343A40;
+            --light-gray-color: #E9ECEF;
+            --white-color: #FFFFFF;
+            --whatsapp-color: #25D366;
+            --hero-background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2070&auto=format&fit=crop');
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; color: var(--text-color); line-height: 1.7; background-color: var(--white-color); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; color: var(--primary-color); margin-bottom: 1rem; font-weight: 700; }
+        h2 { font-size: 2.5rem; }
+        
+        /* --- Cabeçalho ATUALIZADO --- */
+        header { background-color: var(--white-color); padding: 1rem 0; border-bottom: 1px solid var(--light-gray-color); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Espaço entre a imagem do logo e o texto */
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        .logo-img {
+            height: 50px; /* Altura do seu logo */
+            width: auto;
+        }
+        header .logo strong { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; }
+        header .header-contact { font-size: 1rem; font-weight: 500; color: var(--text-color); }
+        header .header-contact i { margin-right: 8px; color: var(--whatsapp-color); font-size: 1.2rem; }
+        
+        /* Seção Hero */
+        .hero { background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), var(--hero-background-image) no-repeat center center/cover; background-attachment: fixed; color: var(--white-color); min-height: 70vh; display: flex; align-items: center; text-align: center; padding: 40px 0; }
+        .hero-text h1 { font-size: 3.5rem; color: var(--white-color); text-shadow: 2px 2px 8px rgba(0,0,0,0.5); }
+        .hero-text p { font-size: 1.2rem; max-width: 700px; margin: 1rem auto 0 auto; font-weight: 400; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
+        
+        /* Seção do Formulário */
+        .form-section { padding: 100px 0; background-color: var(--white-color); }
+        .form-layout { display: flex; gap: 60px; align-items: flex-start; }
+        .personal-info { flex: 1; }
+        .form-container { flex: 1; margin-top: 50px; }
+        .profile-pic { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 6px solid var(--white-color); box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 1.5rem; }
+        .personal-info .creci { font-weight: 700; color: var(--secondary-color); margin-bottom: 1rem; }
+        .personal-info ul { list-style: none; padding-left: 0; margin-top: 1.5rem; }
+        .personal-info ul li { margin-bottom: 0.75rem; font-weight: 400; font-size: 1.1rem; }
+        .personal-info ul i { color: var(--secondary-color); margin-right: 12px; }
+        .form-container { background-color: var(--white-color); padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid var(--light-gray-color); }
+        .form-container h3 { text-align: center; }
+        .form-container p { text-align: center; margin-top: -1rem; margin-bottom: 2rem; }
+        .input-group { margin-bottom: 1.5rem; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 0.9rem; }
+        .input-group input { width: 100%; padding: 14px; border: 1px solid var(--light-gray-color); border-radius: 8px; font-size: 1rem; font-family: 'Poppins', sans-serif; transition: border-color 0.3s, box-shadow 0.3s; }
+        .input-group input:focus { outline: none; border-color: var(--secondary-color); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2); }
+        .cta-button { background: linear-gradient(45deg, var(--secondary-color), #EAC75E); color: var(--primary-color); border: none; padding: 16px; width: 100%; font-size: 1.1rem; font-weight: 700; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 7px 20px rgba(212, 175, 55, 0.4); }
+        
+        /* Imóveis em Destaque (Carrosséis) */
+        .featured-properties { padding: 100px 0; background-color: var(--background-color); overflow: hidden; }
+        .featured-properties h2 { text-align: center; margin-bottom: 3rem; }
+        .property-carousel-container { position: relative; padding: 0 50px; }
+        .property-carousel-container + .property-carousel-container { margin-top: 60px; }
+        .property-card { background-color: var(--white-color); border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.07); overflow: hidden; text-align: left; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--light-gray-color); height: 100%; display: flex; flex-direction: column; }
+        .property-card:hover { transform: translateY(-10px); box-shadow: 0 12px 35px rgba(0,0,0,0.1); }
+        .property-card img { width: 100%; height: 220px; object-fit: cover; }
+        .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .card-content h3 { font-size: 1.5rem; }
+        .card-content p { margin-bottom: 1rem; }
+        .card-content .price { display: block; font-size: 1.6rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0; }
+        .card-button { display: inline-block; background-color: var(--primary-color); color: var(--white-color); text-align: center; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: background-color 0.3s; margin-top: auto; }
+        .card-button:hover { background-color: var(--secondary-color); color: var(--primary-color); }
+        .swiper-button-next, .swiper-button-prev { color: var(--primary-color); }
+        .swiper-button-next:after, .swiper-button-prev:after { font-size: 1.8rem; font-weight: 900; text-shadow: 0 0 10px rgba(255,255,255,0.7); }
+        .swiper-pagination-bullet { background: var(--primary-color); opacity: 0.5; }
+        .swiper-pagination-bullet-active { background: var(--secondary-color); opacity: 1; transform: scale(1.2); }
+        .swiper-pagination { margin-top: 20px !important; position: static !important; }
+
+        /* Outras Seções */
+        .partners { padding: 100px 0; background-color: var(--white-color); }
+        .partners h2 { text-align: center; }
+        .logo-swiper { margin-top: 3rem; }
+        .logo-swiper .swiper-slide { display: flex; justify-content: center; align-items: center; height: 100px; }
+        .logo-swiper img { max-width: 150px; max-height: 80px; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: filter 0.3s, opacity 0.3s; }
+        .logo-swiper img:hover { filter: grayscale(0%); opacity: 1; }
+        .final-cta { padding: 100px 0; background-color: var(--primary-color); text-align: center; color: var(--white-color); }
+        .final-cta h2 { color: var(--white-color); font-size: 2.8rem; }
+        .final-cta p { font-size: 1.2rem; margin-top: -0.5rem; margin-bottom: 2.5rem; opacity: 0.9; }
+        .final-cta .whatsapp-button { background-color: var(--whatsapp-color); color: var(--white-color); border: none; padding: 16px 32px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3); transition: transform 0.3s, box-shadow 0.3s; }
+        .final-cta .whatsapp-button:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+        .final-cta .whatsapp-button i { font-size: 1.5rem; }
+        footer { background-color: #161c2d; color: rgba(255,255,255,0.7); text-align: center; padding: 3rem 0; }
+        footer p { margin: 0; }
+        footer strong { color: var(--white-color); }
+        .scroll-to-top-btn { position: fixed; bottom: 20px; right: 20px; background-color: var(--primary-color); color: var(--white-color); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; opacity: 0; visibility: hidden; transform: translateY(20px); transition: opacity 0.3s, visibility 0.3s, transform 0.3s; }
+        .scroll-to-top-btn.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .scroll-to-top-btn:hover { background-color: var(--secondary-color); color: var(--primary-color); }
+        
+        /* Animação de Rolagem */
+        .section-hidden { opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .section-visible { opacity: 1; transform: translateY(0); }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h2 { font-size: 2rem; }
+            .final-cta h2 { font-size: 2.2rem; }
+            header .container { flex-direction: column; gap: 15px; }
+            .hero { min-height: 50vh; background-attachment: scroll; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .form-layout { flex-direction: column; text-align: center; }
+            .personal-info { margin-bottom: 40px; }
+            .form-container { margin-top: 0; }
+            .property-carousel-container { padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="imagens/logo.png" alt="Logo Elves Corretor" class="logo-img">
+                <strong>Elves Corretor</strong>
+            </a>
+            <div class="header-contact">
+                <i class="fab fa-whatsapp"></i>
+                <span>(11) 99796-4259</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <h1>Imóveis de Alto Padrão em São Paulo</h1>
+                <p>A assessoria completa para você encontrar o imóvel dos seus sonhos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="form-section" class="form-section section-hidden">
+        <div class="container form-layout">
+            <div class="personal-info">
+                <img src="imagens/Foto Elvis.01.png" alt="Foto de Elves Oliveira" class="profile-pic">
+                <h2>Elvis Oliveira</h2>
+                <p class="creci">Corretor Especialista | CRECI-SP: 249778-F</p>
+                <p>Com 5 anos de experiência no mercado imobiliário de São Paulo, minha missão é entender sua necessidade para encontrar o imóvel perfeito para você e sua família.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Análise de Mercado Detalhada</li>
+                    <li><i class="fas fa-check-circle"></i> Suporte Jurídico Completo</li>
+                    <li><i class="fas fa-check-circle"></i> Acesso a Oportunidades Exclusivas</li>
+                </ul>
+            </div>
+            <div class="form-container">
+                <h3>Fale com um especialista</h3>
+                <p>Deixe seu contato para uma consultoria exclusiva.</p>
+                <form id="contactForm">
+                    <div class="input-group">
+                        <label for="name">Seu nome</label>
+                        <input type="text" id="name" name="name" placeholder="Nome completo" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Seu e-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="phone">Seu Telefone/WhatsApp</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required>
+                    </div>
+                    <button type="submit" class="cta-button">Enviar Contato</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <section class="featured-properties section-hidden">
+        <div class="container">
+            <h2>Venha Conhecer nossos Catálagos</h2>
+            <div class="property-carousel-container">
+                <div class="swiper property-swiper-1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio Le sex.png" alt="Imóvel 1"><div class="card-content"><h3>Le Six Recidences</h3><p>Empreendimento é composto por setores completamente independentes.</p><span class="price">Apartamentos de até 521m²</span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio econ.png" alt="Imóvel 2"><div class="card-content"><h3>Lançamento ECON</h3><p>Novo lançamento da construtora ECON, venha conhecer!</p><span class="price">Apartamentos de 37m² a 39m² </span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio Patriane.png"><div class="card-content"><h3>Barile</h3><p>Um prédio que marca a história de São Caetano com alto padrão de qualidade.</p><span class="price"> Apartamentos 85m² a 89m²</span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio Patriane 2.png"><div class="card-content"><h3>Passiane</h3><p>Um projeto moderno, em um dos endereços mais desejados de São Caetano.</p><span class="price">Apartamentos de 132m²</span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio lavvi pedra.png"><div class="card-content"><h3>Pedra</h3><p>Um projeto com tudo o que é preciso para esculpir momentos preciosos.</p><span class="price">Apartamentos com  162m² e 199m²</span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio lavvi safire.png"><div class="card-content"><h3>Saffire</h3><p>Um projeto inspirado na arte do mestre da alta costura e refinamento.</p><span class="price">Apartamentos de 360m² e 493m²</span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio lavvi.png"><div class="card-content"><h3>Alive</h3><p>Conforto, Segurança e Praticidade Inéditos na Vila Prudente.</p><span class="price">Apartamentos de 72m² a 350m² </span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio lavvi haven.png"><div class="card-content"><h3>Heaven</h3><p>LAVVI, CYRELA e YOO, construindo juntos um verdadeiro paraíso.</p><span class="price">Apartamentos de 190m² e 258m²</span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+            <div class="property-carousel-container">
+                <div class="swiper property-swiper-2">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio plano e plano belem.png"><div class="card-content"><h3>Plano Belém</h3><p>More mais perto do trabalho, da faculdade e de tudo que importa pra você.</p><span class="price">Apartamentos de 34m²</span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio plano e plano cambuci.png"><div class="card-content"><h3>Plano Cambuci</h3><p>Um lançamento que completa o seu estilo de vida, venha morar no Cambuci.</p><span class="price">Apartamentos de 34m²</span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio plano e plano jaçana.png"><div class="card-content"><h3>Plano Jaçana</h3><p>Respire a liberdade de sair do aluguel e ter sua casa própria, venha para Jaçana.</p><span class="price">Apartamentos de 34m²</span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio plano e plano unu brás.png"><div class="card-content"><h3>Plano Brás</h3><p>Brás como você nem imagina Plano&Plano como você sempre quis.</p><span class="price">Apartamentos de 34m²</span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio plano e plano unu limão.png"><div class="card-content"><h3>ECON Limão</h3><p>O melhor da zona norte fica no Nort, venha conhecer o novo lançamento da ECON.</p><span class="price">Apartamentos de 34m²</span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                        <div class="swiper-slide"><div class="property-card"><img src="imagens/Prédio plano e plano.png"><div class="card-content"><h3>Plano Mooca</h3><p>Vida na Mooca, com um combo de vantagens: lazer, segurança e mobilidade.</p><span class="price">Apartamentos de 34m²</span><a href="#form-section" class="card-button">Venha Conhecer</a></div></div></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners section-hidden">
+        <div class="container">
+            <h2>Construtoras Parceiras</h2>
+            <div class="swiper logo-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="imagens/logo cury.png" alt="Logo Construtora Cury"></div>
+                    <div class="swiper-slide"><img src="imagens/logo ecom.png" alt="Logo Construtora Ecom"></div>
+                    <div class="swiper-slide"><img src="imagens/Logo Lavvi.png" alt="Logo Construtora Lavvi"></div>
+                    <div class="swiper-slide"><img src="imagens/Logo Patriane.png" alt="Logo Construtora Patriane"></div>
+                    <div class="swiper-slide"><img src="imagens/Logo Plano e Plano.png" alt="Logo Construtora Plano&Plano"></div>
+                    <div class="swiper-slide"><img src="imagens/logo vivaz.png" alt="Logo Construtora Vivaz"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <h2>Pronto para encontrar seu próximo lar?</h2>
+            <p>Clique abaixo e vamos conversar sobre as melhores opções para você.</p>
+            <a href="https://wa.me/5511997964259" target="_blank" class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Falar Pelo WhatsApp
+            </a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p><strong>Elvis Oliveira</strong> | Corretor de Imóveis - CRECI-SP: 249778-F</p>
+            <p>© 2025 | Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="#" id="scrollToTopBtn" class="scroll-to-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script do Carrossel de Logos
+        const swiperLogos = new Swiper('.logo-swiper', {
+            loop: true,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            slidesPerView: 2,
+            spaceBetween: 30,
+            breakpoints: {
+                640: { slidesPerView: 3, spaceBetween: 40 },
+                768: { slidesPerView: 4, spaceBetween: 50 },
+                1024: { slidesPerView: 5, spaceBetween: 60 }
+            }
+        });
+
+        const propertySwiperConfig = {
+            loop: true,
+            spaceBetween: 30,
+            speed: 1000,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            pagination: { el: '.swiper-pagination', clickable: true, },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+            }
+        };
+        const propertySwiper1 = new Swiper('.property-swiper-1', {
+            ...propertySwiperConfig,
+            navigation: { nextEl: '.property-carousel-container:nth-of-type(1) .swiper-button-next', prevEl: '.property-carousel-container:nth-of-type(1) .swiper-button-prev', },
+            pagination: { el: '.property-carousel-container:nth-of-type(1) .swiper-pagination', clickable: true, },
+        });
+        const propertySwiper2 = new Swiper('.property-swiper-2', {
+            ...propertySwiperConfig,
+             navigation: { nextEl: '.property-carousel-container:nth-of-type(2) .swiper-button-next', prevEl: '.property-carousel-container:nth-of-type(2) .swiper-button-prev', },
+            pagination: { el: '.property-carousel-container:nth-of-type(2) .swiper-pagination', clickable: true, },
+        });
+
+        // SCRIPT DO BOTÃO DE ROLAR PARA CIMA
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        };
+        scrollToTopBtn.onclick = function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // SCRIPT DO FORMULÁRIO PARA WHATSAPP
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const yourWhatsappNumber = '5511997964259';
+            let message = `Olá, Elvis! Tenho interesse em uma consultoria.\n\n*Nome:* ${name}\n*E-mail:* ${email}\n*Telefone:* ${phone}`;
+            const whatsappUrl = `https://wa.me/${yourWhatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // SCRIPT PARA ANIMAÇÃO AO ROLAR (REVEAL EFFECT)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        const hiddenElements = document.querySelectorAll('.section-hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
+
+</body>
+</html>
